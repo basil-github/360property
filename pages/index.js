@@ -1,7 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import dynamic from "next/dynamic";
 
+const VR = dynamic(() => import("../components/VR"), { ssr: false });
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -11,14 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          360<a href=""> Property</a>
-        </h1>
-
-      </main>
-
-      
+      <VR />
     </div>
-  )
+  );
 }
