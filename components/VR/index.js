@@ -14,8 +14,9 @@ function VR() {
         image={state.link}
         pitch={10}
         yaw={180}
-        hfov={110}
+        hfov={1100}
         autoLoad
+        hotspotDebug
         onLoad={() => {
           console.log("panorama loaded");
         }}
@@ -34,38 +35,6 @@ function VR() {
           />
         ))}
       </Pannellum>
-      {/* {state.index == 1 && components && (
-        <Pannellum
-          width="100%"
-          height="100vh"
-          image={state.link}
-          pitch={10}
-          yaw={180}
-          hfov={110}
-          autoLoad
-          onLoad={() => {
-            console.log("panorama loaded");
-          }}
-          hotspotDebug
-        >
-          <Pannellum.Hotspot
-            type="custom"
-            pitch={posi}
-            yaw={500}
-            handleClick={(evt, name) => setstate(myImage[1])}
-            name="hs1"
-            text="sdf"
-          />
-          <Pannellum.Hotspot
-            type="custom"
-            pitch={20.596368557706256}
-            yaw={-84.6974409999092}
-            handleClick={(evt, name) => setstate(myImage[1])}
-            name="hs1"
-            text="sdf"
-          />
-        </Pannellum>
-      )} */}
     </div>
   );
 }
