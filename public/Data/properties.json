@@ -1,6 +1,59 @@
 [
     {
-        "property": "Basil villa",
+        "name": "Basil villa",
+        "images": [
+            {
+                "index": 0,
+                "link": "https://pchen66.github.io/Panolens/examples/asset/textures/equirectangular/tunnel.jpg",
+                "hotspot": [
+                    {
+                        "pitch": 500,
+                        "yaw": 600,
+                        "index": 1
+                    },
+                    {
+                        "pitch": 100,
+                        "yaw": 700,
+                        "index": 2
+                    }
+                ]
+            },
+            {
+                "index": 1,
+                "link": "https://miro.medium.com/max/10752/1*kY8Q5mqqqMz6r8YxcEcU6w.jpeg",
+                "hotspot": [
+                    {
+                        "pitch": 500,
+                        "yaw": 600,
+                        "index": 0
+                    },
+                    {
+                        "pitch": 100,
+                        "yaw": 700,
+                        "index": 2
+                    }
+                ]
+            },
+            {
+                "index": 2,
+                "link": "/new.jpg",
+                "hotspot": [
+                    {
+                        "pitch": 43.956533569721216,
+                        "yaw": 2.6532772450975437,
+                        "index": 0
+                    },
+                    {
+                        "pitch": 100,
+                        "yaw": 700,
+                        "index": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Basil villa",
         "images": [
             {
                 "index": 0,

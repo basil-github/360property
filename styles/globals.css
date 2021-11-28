@@ -14,3 +14,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.main_v {
+  position: relative;
+}
+
+.sub_vr {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  display: flex;
+
+}
