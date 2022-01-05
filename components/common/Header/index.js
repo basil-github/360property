@@ -4,7 +4,7 @@ function index() {
   return (
     <header>
       <section className="container">
-        <nav className="navbar">360</nav>
+        <nav className="navbar">header</nav>
       </section>
     </header>
   );

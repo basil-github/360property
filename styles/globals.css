@@ -27,3 +27,46 @@ a {
   display: flex;
 
 }
+
+.footer_main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.footer_main {
+  padding-top: 59px;
+  background-color: #F6F6F6;
+}
+
+.footer_main h6 {
+  font-size: 16px;
+  color: #2B2B2B;
+}
+
+.footer_main a {
+  color: #2B2B2B;
+  opacity: 0.6;
+  font-size: 14px;
+
+}
+
+.copy_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  border-top: 1px solid #80808047;
+  margin-top: 55px !important;
+}
+
+.copy_right h5 {
+  color: #414141;
+  font-size: 14px;
+
+}
