@@ -1,6 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
 function index() {
   return (
     <section className="footer_main">
@@ -49,16 +55,42 @@ function index() {
             </ul>
           </div>
           <div className="offset-md-1 col-md-4">
-            {/* <Image
-              src="me.png"
+            <Image
+              src="/logo.png"
               alt="Picture of the author"
-              width={150}
-              height={30}
-            /> */}
+              width={128}
+              height={51}
+            />
             <p>
               Subscribe to receive latest listings and updates from property
               chips
             </p>
+            <form className="subscribe_form">
+              <input
+                type="email"
+                name=""
+                id=""
+                placeholder="Your email address"
+              />
+              <input type="submit" value="Subscribe" />
+            </form>
+            <ul className="social_links">
+              <li>
+                <InstagramIcon color="disabled" />
+              </li>
+              <li>
+                <FacebookIcon color="disabled" />
+              </li>
+              <li>
+                <TwitterIcon color="disabled" />
+              </li>
+              <li>
+                <LinkedInIcon color="disabled" />
+              </li>
+              <li>
+                <YouTubeIcon color="disabled" />
+              </li>
+            </ul>
           </div>
         </div>
         <div className="row ">

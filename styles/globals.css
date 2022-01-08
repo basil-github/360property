@@ -28,6 +28,48 @@ a {
 
 }
 
+
+
+header {
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.navbar-nav {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row !important;
+
+}
+
+.navbar-nav a {
+  color: #2B2B2B;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.login_like button {
+  background-color: #0DACE6;
+  color: #fff;
+  border-radius: 18px;
+  opacity: 1;
+  padding: 9px 33px;
+  border: none;
+  outline: none;
+  margin-left: 30px;
+  font-size: 12px;
+
+}
+
 .footer_main ul {
   list-style: none;
   padding: 0;
@@ -46,6 +88,9 @@ a {
 .footer_main h6 {
   font-size: 16px;
   color: #2B2B2B;
+  position: relative;
+  margin-bottom: 10px;
+  font-weight: 400;
 }
 
 .footer_main a {
@@ -53,6 +98,28 @@ a {
   opacity: 0.6;
   font-size: 14px;
 
+}
+
+.footer_main p {
+  opacity: 60%;
+  color: #414141;
+  font-size: 12px;
+  max-width: 300px;
+}
+
+.footer_main li {
+  margin-top: 5px;
+}
+
+.footer_main h6::after {
+  content: "";
+  width: 8px;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  filter: blur(0.7px);
 }
 
 .copy_right {
@@ -68,5 +135,48 @@ a {
 .copy_right h5 {
   color: #414141;
   font-size: 14px;
+  font-weight: 300;
 
+}
+
+.social_links {
+  display: flex;
+  flex-direction: row;
+}
+
+.social_links li {
+  padding-right: 10px;
+}
+
+.subscribe_form input[type="email"] {
+  border-radius: 19px;
+  opacity: 1;
+  backdrop-filter: blur(33px);
+  -webkit-backdrop-filter: blur(33px);
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  font-size: 12px;
+  outline: none;
+  width: 65%;
+}
+
+.subscribe_form input[type="submit"] {
+  border-radius: 19px;
+  opacity: 1;
+  background-color: #0DC8E6;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  outline: none;
+  padding: 10px;
+  min-width: 111px;
+}
+
+.subscribe_form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }

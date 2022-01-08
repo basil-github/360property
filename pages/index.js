@@ -1,7 +1,45 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
+import Image from "next/image";
+import { auth } from "../app/firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { useEffect } from "react";
 export default function Home({ properties }) {
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user);
+    });
+
+    return unsubscribe;
+  }, []);
+  function signUp(email, password) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  }
+  const singOutUser = () => {
+    console.log("fffff");
+    signOut(auth)
+      .then(() => {
+        console.log("signOut");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className={styles.container}>
@@ -11,7 +49,22 @@ export default function Home({ properties }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       </div>
-      <section className="container vh-100 ">home</section>
+      <section className="home">
+        <Image
+          src="/home1.jpg"
+          alt="Picture of the author"
+          width={912}
+          height={768}
+        />
+        <button
+          onClick={() => {
+            signUp("basil0@gmail.com", "basilBabu8547");
+          }}
+        >
+          dddd
+        </button>
+        <button onClick={() => singOutUser()}>singOutUser</button>
+      </section>
     </>
   );
 }
