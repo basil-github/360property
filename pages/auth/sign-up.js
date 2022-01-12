@@ -1,125 +1,153 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { useEffect, useState } from 'react'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import Link from '@mui/material/Link'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { useRouter } from 'next/dist/client/router'
+import CircularProgress from '@mui/material/CircularProgress'
 
-function Copyright(props) {
+const auth = getAuth()
+
+function Copyright (props) {
   return (
     <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
+      variant='body2'
+      color='text.secondary'
+      align='center'
       {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="/">
+      {'Copyright © '}
+      <Link color='inherit' href='/'>
         Reelhomes
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
-  );
+  )
 }
 
-const theme = createTheme();
+const theme = createTheme()
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+export default function SignIn () {
+  const router = useRouter()
+  const [loader, setLoader] = useState(false)
+  const handleSubmit = event => {
+    setLoader(true)
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    if (data.get('password') != data.get('conform-password')) {
+      alert('Passwords do not match')
+    } else {
+      createUserWithEmailAndPassword(
+        auth,
+        data.get('email'),
+        data.get('password')
+      )
+        .then(userCredential => {
+          setLoader(false)
+          console.clear()
+          router.push('/')
+        })
+        .catch(error => {
+          setLoader(false)
+          alert(error.message)
+        })
+    }
+  }
 
   return (
-    <section className="vh-100 d-flex align-items-center">
+    <section className='vh-100 d-flex align-items-center'>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component='main' maxWidth='xs'>
           <CssBaseline />
           <Box
             sx={{
               marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "#0DACE6" }}>
+            <Avatar sx={{ m: 1, bgcolor: '#0DACE6' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component='h1' variant='h5'>
               Sign Up
             </Typography>
             <Box
-              component="form"
+              component='form'
               onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
               <TextField
-                margin="normal"
+                margin='normal'
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
                 autoFocus
               />
               <TextField
-                margin="normal"
+                margin='normal'
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
               />
               <TextField
-                margin="normal"
+                margin='normal'
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name='conform-password'
+                label='Conform Password'
+                type='password'
+                id='conform-password'
+                autoComplete='current-conform-password'
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                control={<Checkbox value='remember' color='primary' />}
+                label='Remember me'
               />
               <Button
-                type="submit"
+                type='submit'
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "#0DACE6" }}
+                variant='contained'
+                sx={{ mt: 3, mb: 2, bgcolor: '#0DACE6' }}
               >
                 Sign In
+                {loader && (
+                  <CircularProgress
+                    color='inherit'
+                    className='ms-3'
+                    size='20px'
+                  />
+                )}
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link href='#' variant='body2'>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/auth/login" variant="body2">
-                    {"Already have an account? Login"}
+                  <Link href='/auth/login' variant='body2'>
+                    {'Already have an account? Login'}
                   </Link>
                 </Grid>
               </Grid>
@@ -129,5 +157,5 @@ export default function SignIn() {
         </Container>
       </ThemeProvider>
     </section>
-  );
+  )
 }
