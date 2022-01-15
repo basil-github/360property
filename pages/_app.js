@@ -6,12 +6,18 @@ import '@georgedrpg/pannellum-react-next/es/css/style-textInfo.css'
 import Layout from '@layout/Default'
 import store from '../app/store'
 import { Provider } from 'react-redux'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { authCheck } from '../features/user/userSlice'
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
+import { useState } from 'react'
 import { auth } from '../app/firebase'
 
 function MyApp ({ Component, pageProps }) {
-  const auth = getAuth()
+  const [open, setOpen] = useState(true)
+  const handleClose = () => {
+    setOpen(false)
+  }
   onAuthStateChanged(auth, user => {
     if (user) {
       const userData = {
@@ -23,7 +29,9 @@ function MyApp ({ Component, pageProps }) {
         phoneNumber: user.phoneNumber // user phone number
       }
       store.dispatch(authCheck(userData))
+      setOpen(false)
     } else {
+      setOpen(false)
     }
   })
 
@@ -32,6 +40,13 @@ function MyApp ({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color='inherit' />
+      </Backdrop>
     </Provider>
   )
 }
