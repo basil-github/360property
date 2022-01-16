@@ -20,6 +20,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import { auth } from "@app/firebase";
 import Image from "next/image";
+import GoogleButton from "react-google-button";
 
 function Copyright(props) {
   return (
@@ -174,17 +175,8 @@ export default function SignIn() {
                   </Link>
                 </Grid>
               </Grid>
-              <Grid container justifyContent="center">
-                <Button>
-                  <Image
-                    src={"/google.png"}
-                    alt="google"
-                    width={262}
-                    height={72}
-                    onClick={() => googleSignIn()}
-                    className="mt-3"
-                  />
-                </Button>
+              <Grid container justifyContent="center" className="pt-3">
+                <GoogleButton onClick={() => googleSignIn()} />
               </Grid>
             </Box>
           </Box>

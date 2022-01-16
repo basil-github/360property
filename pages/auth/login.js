@@ -18,7 +18,7 @@ import {
 import { useRouter } from 'next/dist/client/router'
 import CircularProgress from '@mui/material/CircularProgress'
 import Alert from '@mui/material/Alert'
-import Image from 'next/image'
+import GoogleButton from 'react-google-button'
 import { auth } from '@app/firebase'
 
 function Copyright (props) {
@@ -161,18 +161,8 @@ export default function SignIn () {
                   </Link>
                 </Grid>
               </Grid>
-              ;
-              <Grid container justifyContent='center'>
-                <Button>
-                  <Image
-                    src={'/google.png'}
-                    alt='google'
-                    width={262}
-                    height={72}
-                    onClick={() => googleSignIn()}
-                    className='mt-3'
-                  />
-                </Button>
+              <Grid container justifyContent='center' className='pt-3'>
+                <GoogleButton onClick={() => googleSignIn()} />
               </Grid>
             </Box>
           </Box>
